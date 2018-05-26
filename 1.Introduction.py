@@ -4,7 +4,7 @@ print "Let's start!"
 
 name = raw_input("What is your name?")
 
-print "Hi"+name+"!"
+print "Hi"+name+"! Nice that you are here."
 
 print "Let's start by organizing the costs that are related to your house."
 
