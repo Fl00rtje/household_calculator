@@ -5,10 +5,10 @@ import functions
 print("We are going to start by organising the costs around your house.")
 print("The amount asked for is per month.")
 
-rent = functions.ask_amount("How much rent do you pay? € ")
+rent = functions.ask_amount("How much rent/mortgage do you pay? € ")
 servicecosts = functions.ask_amount("How much servicecosts do you pay? € ")
 total_rent = rent + servicecosts
-print(f'The total amount you spend on rent is € {total_rent}')
+print(f'The total amount you spend on rent/mortgage and servicecosts is € {total_rent}')
 
 gas_and_electricity = functions.ask_amount("How much do you pay for gas and electricity? € ")
 water = functions.ask_amount("How much do you pay for water? € ")

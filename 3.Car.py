@@ -1,40 +1,29 @@
+# improved & converted to Python 3
+# I think it can be further improved
 
-print "If a yes/no question is asked, please answer with 'YES' or 'NO'."
-car = raw_input("Do you have a car? ").upper()
+import functions
 
-if car == "YES":
-    #carinsurence: how much do you spend on your car insurance every month?
-    carinsurence = raw_input("How much do you spend on your car insurence every month? ")
-    #roadtaxes: how much do you spend on road taxes each month?
-    roadtaxes = raw_input("How much do you spend on roadtaxes each month? ")
-    #anwb: do you have an anwb membership?
-    anwb = raw_input("Do you have an ANWB membership? ").upper()
+car = functions.yes_or_no("Do you own a car?")
 
-    if anwb == "YES":
-        anwbcosts = raw_input("How much do you pay for your membership monthly? ")
-    elif anwb == "NO":
-        print "Ok, no ANWB membership for you."
-        anwbcosts = 0
-    else:
-        print "I'm sorry, I don't understand -- "+anwb+" -- I can only deal with 'YES' of 'NO'."
+def cost_parking_permit():
+    amount = 0
+    if functions.yes_or_no("Do you pay for a parking permit?"):
+        amount = functions.ask_amount("How much do you pay for your parking permit? € ")
+    return amount
 
-    #parkinglicense: do you have any costs concering a parking licence? (de laatste vraag, zo nee, dan kan alles opgeteld)
-    parkingpermit = raw_input("Do you have a parking permit that you pay for? ").upper()
-    if parkingpermit == "YES":
-        parkingpermitcosts = raw_input("How much do you pay for your parking permit monthly? ")
-    elif parkingpermit == "NO":
-        print "Ok, no parking permit for you."
-        parkingpermitcosts = 0
-    else:
-        print "I'm sorry, I don't understand -- "+parkingpermit+" -- I can only deal with 'YES' or 'NO'."
-    sumcar = int(carinsurence) + int(roadtaxes) + int(anwbcosts) + int(parkingpermitcosts)
-    print "Your total monthly expenses on your car are: "
-    print sumcar
-elif car == "NO":
-    print "Ok, no car for you. Thank you for saving the planet."
+def cost_road_assistance():
+    amount = 0
+    if functions.yes_or_no("Do you pay for road assistance?"):
+        amount = functions.ask_amount("How much do you pay for road assistance? € ")
+    return amount
+
+if car:
+    insurance = functions.ask_amount("How much do you pay for insurance? € ")
+    roadtaxes = functions.ask_amount("How much do you pay for road taxes? € ")
+    parking_permit = cost_parking_permit()
+    road_assistance = cost_road_assistance()
+
+    total_car = insurance + roadtaxes + parking_permit + road_assistance
+    print(f'The total amount you are spending on your car is € {total_car}')
 else:
-    print "I'm sorry, I don't understand -- "+car+" -- I can only deal with YES' or 'NO'."
-
-print "THE END"
-
-
+    print("Thank you for saving the planet!")
