@@ -12,4 +12,20 @@ def yes_or_no(question):
 		else:
 			print("Please enter y or n")
 
-car = yes_or_no("Do you own a car?")
+# car = yes_or_no("Do you own a car?")
+# print(car)
+
+def ask_amount(question):
+	waiting = True
+	while waiting:
+		try:
+			answer = int(input(question))
+		except:
+			print("Please enter a number (no decimals)")
+			continue
+		else:
+			return answer
+			waiting = False
+
+# rent = ask_amount("How much rent do you pay?")
+# print(rent)
